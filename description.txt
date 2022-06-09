@@ -1,0 +1,57 @@
+Yee-Haw!
+
+(This is Open Source)
+
+A growing mod that adds a few random things, none of which are even cowboy related at all! I published this mod for 1.3 a long time ago, and it stayed published until it apparently disappeared (I think?). Anyways, now I have decided to rebuild it from the ground up for 1.4. It doesn't include everything from the original 1.3 mod, but it adds some new things.
+
+v0.3
+
+Additions:
+
+Neptunium Armor
+- Helmet - 10 Neptunium rods + Molten Helmet
+- Breastplate - 15 Neptunium rods + Molten Breastplate
+- Greaves - 12 Neptunium rods + Molten Greaves
+Wearing any of the pieces without wearing all three at the same time will inflict the Radiated debuff (the same debuff that's inflicted when holding Neptunium tools)
+The set bonus grants immunity to the Radiated debuff.
+
+Neptunium Arrow (100 Arrows + 1 Neptunium rod) and the "Silver Spinner" Yoyo (Wooden Yoyo + 9 rods) - Both can inflict the Radiated debuff on a target
+
+Extendo Hand - Slap Hand + Extendo Grip, it's like the Slap Hand but bigger
+Motorpuncher - Chlorophyte Jackhammer + Mechanical Glove, it's like the Slap Hand but operates like a Jackhammer
+Lunar Manipulator - 20 of every Lunar Event fragment + 10 Luminite Bar + 1 Ancient Manipulator. Left click to cycle moon phases, right click to cycle moon styles.
+
+/timeset command, a simple test command that allows you to set the time to dawn/noon/dusk/midnight outside of Journey mode
+
+Adjusted Terra Toilet Pickaxe and Royal Bow's sprites
+Slightly nerfed Neptunium Sword's damage, buffed its knockback
+Significantly buffed the Sword of Profit's money drop increase, significantly reduced damage
+Fixed some price values on some items
+
+
+v0.2
+
+Neptunium has been added to this mod.
+
+Neptunium Ore - Generates Underground
+Neptunium Rod - 4 ore at a Hellforge = this
+
+Neptunium Pickaxe - Molten Pick + 12 rods, faster than Molten and +2 range, at the cost of lowering your defense when holding this. Struck enemies will have their defense lowered.
+Neptunium Hamaxe - Molten Hamaxe + 10 rods, same thing as above.
+Neptunium Longblade - Fiery Greatsword + 12 rods + 1 Ruby, struck enemies will have their defense lowered, but your defense will again be lowered when holding this.
+
+IED now takes one Neptunium Rod to craft in addition to its previous recipe.
+
+Adjusted some other stuff for existing items.
+
+
+v0.1
+
+Sword of Profit - Applies the Midas debuff on contact (enemies drop more coins on death)
+Royal Bow - Autoshooting post-EOC bow
+Terra Toilet Pickaxe - Exactly what you think it is
+IED - Plays the Arabic Nokia tune before exploding a huge radius (nerfed from the 1.3 version, explosion is much smaller)
+Wooden Gun - Uses Wooden Bullets, craftable immediately after starting a new world.
+
+
+Triangular Slime - A slime variant found in the overworld.
