@@ -14,51 +14,22 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using YeeHaw.UI;
+using YeeHaw.Currencies;
 
 
 namespace YeeHaw
 {
-    /*public class YeeHawUI : ModSystem
-    {
-        internal MoonPhaseSelector MoonPhaseSelector;
+	public class YeeHaw : Mod
+	{
 
-        private UserInterface _moonPhaseSelector;
+        public static int TradeTokenID; // This is for the Supplier's custom currency
+        public static int SuperTradeTokenID;
 
         public override void Load()
         {
-            // The Moon Phase Selection UI
-            MoonPhaseSelector = new MoonPhaseSelector();
-            MoonPhaseSelector.Activate();
-            _moonPhaseSelector = new UserInterface();
-            _moonPhaseSelector.SetState(MoonPhaseSelector);
-
+            TradeTokenID = CustomCurrencyManager.RegisterCurrency(new TradeTokenCurrency(ModContent.ItemType<TradeToken>(), 999L));
+            SuperTradeTokenID = CustomCurrencyManager.RegisterCurrency(new SuperTradeTokenCurrency(ModContent.ItemType<SuperTradeToken>(), 999L));
         }
-        public override void UpdateUI(GameTime gameTime)
-        {
-            _moonPhaseSelector?.Update(gameTime);
-        }
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
-            if (mouseTextIndex != -1)
-            {
-                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-                    "YourMod: A Description",
-                    delegate
-                    {
-                        _moonPhaseSelector.Draw(Main.spriteBatch, new GameTime());
-                        return true;
-                    },
-                    InterfaceScaleType.UI)
-                );
-            }
-
-        }
-    }*/
-
-
-	public class YeeHaw : Mod
-	{
 
         public override void AddRecipeGroups()
         {
@@ -92,7 +63,52 @@ namespace YeeHaw
         ItemID.BloodButcherer
             });
             RecipeGroup.RegisterGroup("YeeHaw:NightsEdgeIngredients", group4);
+
+            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Bar", new int[]
+            {
+        ItemID.DemoniteBar,
+        ItemID.CrimtaneBar,
+            });
+            RecipeGroup.RegisterGroup("YeeHaw:EvilBars", group5);
         }
+
+        /*public class YeeHawUI : ModSystem
+        {
+            internal MoonPhaseSelector MoonPhaseSelector;
+
+            private UserInterface _moonPhaseSelector;
+
+            public override void Load()
+            {
+                // The Moon Phase Selection UI
+                MoonPhaseSelector = new MoonPhaseSelector();
+                MoonPhaseSelector.Activate();
+                _moonPhaseSelector = new UserInterface();
+                _moonPhaseSelector.SetState(MoonPhaseSelector);
+
+            }
+            public override void UpdateUI(GameTime gameTime)
+            {
+                _moonPhaseSelector?.Update(gameTime);
+            }
+            public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+            {
+                int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+                if (mouseTextIndex != -1)
+                {
+                    layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+                        "YourMod: A Description",
+                        delegate
+                        {
+                            _moonPhaseSelector.Draw(Main.spriteBatch, new GameTime());
+                            return true;
+                        },
+                        InterfaceScaleType.UI)
+                    );
+                }
+
+            }
+        }*/
 
     }
 }
