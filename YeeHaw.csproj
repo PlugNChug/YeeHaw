@@ -8,6 +8,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="icon.ase" />
     <None Remove="Items\Armor\NeptuniumArmor.aseprite" />
     <None Remove="Items\Weapons\TerraToiletPickSmall.png" />
     <None Remove="NPCs\Town\Supplier.ase" />
