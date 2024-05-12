@@ -2,11 +2,15 @@ Yee-Haw!
 
 This is an open source 1.4.4 mod that adds a few random things, none of which are even cowboy related at all...
 
-[c/00FF00:v0.3.2]
+[c/00FF00:v0.3.3]
 
 - Now compatible with the current tModLoader build
 - Adjusted some recipes
 - Adjusted Supplier shop
+
+[c/00FF00:v0.3.2]
+
+I actually don't remember what I changed here but apparently this is the version the Steam Workshop has
 
 [c/00FF00:v0.3.1]
 
