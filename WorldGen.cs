@@ -4,14 +4,13 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.GameContent.Generation;
 using Terraria.IO;
+using YeeHaw.Content.Tiles;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
-
-
 
 namespace YeeHaw
 {
@@ -20,7 +19,7 @@ namespace YeeHaw
 
         #region GENERATION
 
-        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             if(shiniesIndex != -1)
@@ -35,16 +34,16 @@ namespace YeeHaw
             for(var i = 0; i < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); i++)
             {
                 int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
-                int y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY - 50);
+                int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY - 50);
 
-                Tile tile = Main.tile[x, y];
-                if (tile.TileType == TileID.Sandstone)
+                Tile tile = Framing.GetTileSafely(x, y);
+                if (tile.TileType == TileID.Sandstone || tile.TileType == TileID.HardenedSand || tile.TileType == TileID.Sand)
                 {
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 16), WorldGen.genRand.Next(3, 6), ModContent.TileType<Tiles.NeptuniumOreTile>());
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 16), WorldGen.genRand.Next(3, 6), ModContent.TileType<NeptuniumOreTile>());
                 }
                 else
                 {
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(3, 6), ModContent.TileType<Tiles.NeptuniumOreTile>());
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(3, 6), ModContent.TileType<NeptuniumOreTile>());
                 }
                 
             }
