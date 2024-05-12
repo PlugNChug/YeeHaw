@@ -1,4 +1,4 @@
 displayName = Yee-Haw!
 author = Plug-n-Chug
-version = 0.3.1
+version = 0.3.3.1
 homepage = https://github.com/PlugNChug/YeeHaw
