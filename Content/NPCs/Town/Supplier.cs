@@ -23,7 +23,7 @@ namespace YeeHaw.Content.NPCs.Town
 	[AutoloadHead]
 	public class Supplier : ModNPC
 	{
-		public static bool unlockedSupplierSpawn = false;
+		// public static bool unlockedSupplierSpawn = false;
 		public const string ShopName = "Illegal Trades";
 		public override void SetStaticDefaults() {
 			// DisplayName automatically assigned from localization files, but the commented line below is the normal approach.
@@ -52,7 +52,6 @@ namespace YeeHaw.Content.NPCs.Town
 				.SetBiomeAffection<SnowBiome>(AffectionLevel.Dislike)
 				.SetBiomeAffection<OceanBiome>(AffectionLevel.Dislike)
 				.SetBiomeAffection<DesertBiome>(AffectionLevel.Like)
-				.SetBiomeAffection<MushroomBiome>(AffectionLevel.Like)
 				.SetBiomeAffection<UndergroundBiome>(AffectionLevel.Love)
 				.SetNPCAffection(NPCID.ArmsDealer, AffectionLevel.Love)
 				.SetNPCAffection(NPCID.WitchDoctor, AffectionLevel.Like)
@@ -98,10 +97,10 @@ namespace YeeHaw.Content.NPCs.Town
 
 		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */ { // Requirements for the town NPC to spawn.
 			foreach (var player in Main.ActivePlayers) {
-				if (unlockedSupplierSpawn)
-					return true;
+				//if (unlockedSupplierSpawn)
+				//	return true;
 
-				double num = 5000000.0;
+				double num = 1000000.0;
 				int num2 = 0;
 				if (!player.active)
 					continue;
@@ -122,7 +121,7 @@ namespace YeeHaw.Content.NPCs.Town
 							num2 += item.stack * 1000000;
 
 						if ((double)num2 >= num)
-						unlockedSupplierSpawn = true;
+						// unlockedSupplierSpawn = true;
 							return true;
 					}
 				}

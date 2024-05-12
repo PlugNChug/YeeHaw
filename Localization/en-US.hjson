@@ -161,21 +161,23 @@ Mods: {
 				DisplayName: Supplier
 
 				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
+					Content: This space will do.
+					NoHome: Everyone's gonna see my shenanigans if you don't put me in a house!
+					FarFromHome: Buddy, I can't do remote business well. Take me back to my place.
+					LoveSpace: Not too many people here... I can work with this.
+					DislikeCrowded: I have a hunch someone's gonna find me out...
+					HateCrowded: ...this place has way to many people for me to work discreetly.
+					LoveBiome: "{BiomeName} is the perfect place for me to do business."
+					LikeBiome: My origins are from {BiomeName}, glad to be in a place I'm comfortable in.
+					DislikeBiome: "{BiomeName} is not the place to be. My clothes don't protect me from the cold!"
+					LoveNPC: "{NPCName}'s way of doing business is a lot like mine. I love it..."
+					LikeNPC: Much like me, {NPCName} is shrouded in mystery.
+					HateNPC: Ugh, I can't go a day without thinking {NPCName} will tattle on me.
+					LikeNPC_Princess: I can get by with {NPCName}. She doesn't seem to know what I'm doing.
+					Princess_LovesNPC: I love that weird hooded guy's style! It's so... unique!
 				}
+
+				Census.SpawnCondition: Have [i/s1:74] in your inventory
 			}
 		}
 

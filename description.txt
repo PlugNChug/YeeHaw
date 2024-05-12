@@ -3,13 +3,21 @@ Yee-Haw!
 This is an open source 1.4.4 mod that adds a few random things, none of which are even cowboy related at all...
 
 - New armor and gear made from the new Neptunium Ore, found uncommonly underground!
-- New Town NPC and special currencies! (Get 5 platinum coins to unlock him!)
+- New Town NPC and special currencies! (Get a platinum coin to unlock him!)
 - Triangular Slimes are an easier way to get Pink Gel!
 - An assortment of fun weapons and doohickeys!
 - Probably some more stuff I don't remember :|
 
 
 CHANGELOG
+
+v0.3.3.2
+
+Supplier NPC Changes
+- Spawn condition adjusted and fixed (used to be 5 platinum coins, but this condition didn't even work for some reason)
+- Happiness quotes improved
+- No longer likes the Mushroom Biome
+- Compatibility with Census Mod
 
 v0.3.3.1
 
