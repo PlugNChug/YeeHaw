@@ -6,6 +6,8 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="changelog.txt" />
+    <None Remove="Content\Items\Furniture\Banners\Banners.png" />
     <None Remove="icon.ase" />
     <None Remove="Content\Items\Armor\NeptuniumArmor.aseprite" />
     <None Remove="Content\Items\Weapons\TerraToiletPickSmall.png" />
@@ -13,6 +15,10 @@
     <None Remove="Content\NPCs\Town\Supplier.ase" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Remove="Content\Items\NewFolder\**" />
+    <Compile Remove="Content\Items\NewFolder\**" />
+    <EmbeddedResource Remove="Content\Items\NewFolder\**" />
+    <None Remove="Content\Items\NewFolder\**" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Localization\" />

@@ -17,40 +17,16 @@ namespace YeeHaw
     public class YeeHawWorld : ModSystem
     {
 
-        #region GENERATION
-
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             if(shiniesIndex != -1)
             {
-                tasks.Insert(shiniesIndex + 1, new PassLegacy("Neptunium Ore Spawn", GenerateNeptuniumOre));
+                tasks.Insert(shiniesIndex + 1, new NeptuniumOreSpawn("Neptunium Ore Spawn", 100f));
             }    
         }
 
-        private void GenerateNeptuniumOre(GenerationProgress progress, GameConfiguration configuration)
-        {
-            progress.Message = "Placing Neptunium Ore";
-            for(var i = 0; i < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); i++)
-            {
-                int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
-                int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY - 50);
-
-                Tile tile = Framing.GetTileSafely(x, y);
-                if (tile.TileType == TileID.Sandstone || tile.TileType == TileID.HardenedSand || tile.TileType == TileID.Sand)
-                {
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 16), WorldGen.genRand.Next(3, 6), ModContent.TileType<NeptuniumOreTile>());
-                }
-                else
-                {
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(3, 6), ModContent.TileType<NeptuniumOreTile>());
-                }
-                
-            }
-        }
-
-        #endregion
-
+        // -------------------DEBUG ZONE-------------------
         /*public static bool JustPressed(Keys key)
         {
             return Main.keyState.IsKeyDown(key) && !Main.oldKeyState.IsKeyDown(key);
@@ -67,7 +43,42 @@ namespace YeeHaw
             Dust.QuickBox(new Vector2(x, y) * 16, new Vector2(x + 1, y + 1) * 16, 2, Color.YellowGreen, null);
 
             // Code to test placed here:
-            WorldGen.TileRunner(x - 1, y, WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(2, 8), TileID.CobaltBrick);
+            Tile tile = Framing.GetTileSafely(x, y);
+            int steps = WorldGen.genRand.Next(3, 6);
+            Main.NewText(TileID.Sets.CanBeClearedDuringGeneration[0]);
+            //if (tile.TileType == TileID.Sandstone || tile.TileType == TileID.HardenedSand || tile.TileType == TileID.Sand)
+            //{
+            //    strength = WorldGen.genRand.Next(10, 13);
+            //    WorldGen.TileRunner(x, y, strength, steps, ModContent.TileType<NeptuniumOreTile>());
+            //    Main.NewText("Test1");
+            //    Main.NewText("Strength: " + strength);
+            //    Main.NewText("Steps: " + steps);
+            //}
+            //else
+            //{
+            //    strength = WorldGen.genRand.Next(4, 7);
+            //    WorldGen.TileRunner(x, y, strength, steps, ModContent.TileType<NeptuniumOreTile>());
+            //    Main.NewText("Test2");
+            //    Main.NewText("Strength: " + strength);
+            //    Main.NewText("Steps: " + steps);
+            //}
         }*/
+    }
+
+    public class NeptuniumOreSpawn : GenPass
+    {
+        public NeptuniumOreSpawn(string name, float loadWeight) : base(name, loadWeight)
+        {
+        }
+
+        protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
+        {
+            progress.Message = "Placing Neptunium Ore";
+
+            for (int index = 0; index < (int)(Main.maxTilesX * Main.maxTilesY * 0.00010); ++index)
+            {
+                WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY / 2), Main.maxTilesY - 50), (double)WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<NeptuniumOreTile>());
+            }
+        }
     }
 }

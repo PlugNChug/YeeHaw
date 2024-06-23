@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 using YeeHaw.Content.Tiles;
 using YeeHaw.Content.Buffs;
 
@@ -13,7 +12,7 @@ namespace YeeHaw.Content.Items.Tiles
         {
             Item.width = 12;
             Item.height = 12;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.value = Item.buyPrice(0, 0, 5, 0);
             Item.rare = ItemRarityID.Orange;
             Item.consumable = true;

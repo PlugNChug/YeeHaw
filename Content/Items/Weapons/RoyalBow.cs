@@ -18,10 +18,12 @@ namespace YeeHaw.Content.Items.Weapons
         {
             Item.damage = 17;
             Item.DamageType = DamageClass.Ranged;
-            Item.width = 40;
-            Item.height = 40;
-            Item.useTime = 32;
-            Item.useAnimation = 32;
+            Item.width = 60;
+            Item.height = 60;
+            Item.useAnimation = 44;
+			Item.useTime = 22; // one third of useAnimation
+			Item.reuseDelay = 22;
+			Item.consumeAmmoOnLastShotOnly = true;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 1.2f;
             Item.value = 20000;

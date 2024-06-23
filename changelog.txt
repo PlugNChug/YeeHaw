@@ -1,0 +1,118 @@
+Yee-Haw! v{ModVersion} - {tMLBuildPurpose} tML v{tMLVersion}.
+Learn more at the [url={https://github.com/PlugNChug/YeeHaw}]homepage[/url]
+
+CHANGELOG
+
+v0.3.4 "Polishing"
+
+- Added the Super Extendo Hand
+	- It's an upgrade to the Extendo Hand that makes all entities and bosses extremely susceptible to knockback
+	- Made with an Extendo Hand and Broken Hero Sword at a Mythril or equivalent anvil
+- Sword of Profit rework
+	- First of all it was bugged; striking an enemy multiple times resulted in exponential value growth with no limit
+		- This resulted in regular enemies giving huge amounts of platinum coins
+	- Made it so that exponential enemy value growth still happens, but it's more random
+	- Unique popup text mechanics
+	- Resprite
+- Royal Bow rework
+	- Because global autofire is an option in Terraria's settings, the Royal Bow's mechanics will be changed a bit
+	- Now shoots two arrows for the cost of one, and is still autofireable
+	- Resprite
+- IED Changes
+	- Now properly damages both players and enemies
+	- Sound is now tied to the projectile
+- Triangular Slime Changes
+	- Triangular Slime no longer spawns during night
+	- Added a fully functional banner (should also fix an issue with Green Slime Banner drops breaking)
+	- Properly transforms into Shimmer Slime when Shimmered
+- Supplier Changes
+	- Shimmer sprites added
+	- Shop rebalancing and Additions
+		- Offers the Bloody Tear during a Hardmode Blood Moon for 3 Trade Tokens
+		- OFfers Biome Mimic keys for 10 Trade Tokens each
+		- Offers Souls of ____, based on which mech bosses you've defeated, for 1 Super Trade Token each
+		- Offers the Solar Tablet for 5 Super Trade Tokens
+		- Post ML weapons can now only be obtained post ML instead of post Cultist. Super Trade Token prices for these items were reduced to compensate.
+		- Most items requiring normal Trade Tokens had prices reduced
+- Renamed some Neptunium Weapons
+	- Neptunium Sword -> Neptunium Longblade (This is to fix a naming bug that occurred starting in v0.3.3)
+	- Neptunium Yoyo  -> Sleek Spinner
+- Adjusted Neptunium Ore generation
+- Adjusted tooltips for some items
+- Adjusted max stacks for some items
+- Improved the description/changelog
+- Removed the /timeset command, I only used it for personal testing purposes. It was added in v0.3.0.
+- Other small changes
+
+
+v0.3.3.2
+
+- Supplier NPC Changes
+	- Spawn condition adjusted and fixed (used to be 5 platinum coins, but this condition didn't even work for some reason)
+	- Happiness quotes improved
+	- No longer likes the Mushroom Biome
+	- Compatibility with Census Mod
+
+v0.3.3.1
+
+- Icon update :)
+
+v0.3.3 "Porting"
+
+- Now compatible with the current tModLoader build
+- Adjusted some recipes
+- Adjusted Supplier shop
+
+v0.3.2 "What?"
+
+I actually don't remember what I changed here but apparently this is the version the Steam Workshop has
+
+v0.3.1 "The Supplier"
+
+- New NPC: The Supplier
+	Hopefully he can be polished as time goes on. Illegal and sketchy offers are in his shop. 
+	Create Trade Tokens out of Silver Coins and Demonite/Crimtane Bars at an Anvil to trade with him. 
+	You can upgrade Trade Tokens to Super Trade Tokens with Hallowed Bars and a Mythril Anvil.
+- Also updated the icon
+
+v0.3.0 "Content"
+
+Additions:
+- Neptunium Armor
+	- Helmet - 10 Neptunium rods + Molten Helmet
+	- Breastplate - 15 Neptunium rods + Molten Breastplate
+	- Greaves - 12 Neptunium rods + Molten Greaves
+	Wearing any of the pieces without wearing all three at the same time will inflict the Radiated debuff (the same debuff that's inflicted when holding Neptunium tools)
+	The set bonus grants immunity to the Radiated debuff.
+- Neptunium Arrow (100 Arrows + 1 Neptunium rod) and the "Silver Spinner" Yoyo (Wooden Yoyo + 9 rods) - Both can inflict the Radiated debuff on a target
+- Extendo Hand - Slap Hand + Extendo Grip, it's like the Slap Hand but bigger
+- Motorpuncher - Chlorophyte Jackhammer + Mechanical Glove, it's like the Slap Hand but operates like a Jackhammer
+- Lunar Manipulator - 20 of every Lunar Event fragment + 10 Luminite Bar + 1 Ancient Manipulator. Left click to cycle moon phases, right click to cycle moon styles.
+- /timeset command, a simple test command that allows you to set the time to dawn/noon/dusk/midnight outside of Journey mode
+- Adjusted Terra Toilet Pickaxe and Royal Bow's sprites
+- Slightly nerfed Neptunium Longblade's damage, buffed its knockback
+- Significantly buffed the Sword of Profit's money drop increase, significantly reduced damage
+- Fixed some price values on some items
+
+
+v0.2.0 "Neptunium"
+
+- Neptunium has been added to this mod.
+	- Neptunium Ore - Generates Underground
+	- Neptunium Rod - 4 ore at a Hellforge = this
+	- Neptunium Pickaxe - Molten Pick + 12 rods, faster than Molten and +2 range, at the cost of lowering your defense when holding this. Struck enemies will have their defense lowered.
+	- Neptunium Hamaxe - Molten Hamaxe + 10 rods, same thing as above.
+	- Neptunium Longblade - Fiery Greatsword + 12 rods + 1 Ruby, struck enemies will have their defense lowered, but your defense will again be lowered when holding this.
+	- The IED now takes one Neptunium Rod to craft in addition to its previous recipe.
+- Adjusted some other stuff for existing items.
+
+
+v0.1.0 "Initial Release"
+
+Initial Additions
+- Sword of Profit - Applies the Midas debuff on contact (enemies drop more coins on death)
+- Royal Bow - Autoshooting post-EOC bow
+- Terra Toilet Pickaxe - Exactly what you think it is
+- IED - Plays the Arabic Nokia tune before exploding a huge radius (nerfed from the 1.3 version, explosion is much smaller)
+- Wooden Gun - Uses Wooden Bullets, craftable immediately after starting a new world.
+- Triangular Slime - A slime variant found in the overworld.

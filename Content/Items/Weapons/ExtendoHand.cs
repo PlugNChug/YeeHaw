@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,28 +7,32 @@ namespace YeeHaw.Content.Items.Weapons
 {
     public class ExtendoHand : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Extendo Hand"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            // Tooltip.SetDefault("The wrath of the Slap Hand and the range of the Extendo Grip combined results in this monstrosity");
-        }
 
         public override void SetDefaults()
         {
-            Item.damage = 35;
+            Item.damage = 55;
             Item.DamageType = DamageClass.Melee;
-            Item.crit = 15;
+            Item.crit = 19;
             Item.width = 66;
             Item.height = 68;
-            Item.useTime = 24;
-            Item.useAnimation = 24;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 22f;
             Item.value = Item.buyPrice(0, 10, 0, 0);
             Item.rare = ItemRarityID.LightPurple;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.scale = 1.1f;
+            Item.scale = 1f;
+        }
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            SoundEngine.PlaySound(SoundID.Item175); // Slap Hand Sound
+        }
+
+        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
+        {
+            SoundEngine.PlaySound(SoundID.Item175); // Slap Hand Sound
         }
 
         public override void AddRecipes()

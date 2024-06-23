@@ -1,10 +1,10 @@
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
 using Microsoft.Xna.Framework;
+using YeeHaw.Content.Items.Furniture.Banners;
 
 namespace YeeHaw.Content.NPCs.Enemies
 {
@@ -14,6 +14,7 @@ namespace YeeHaw.Content.NPCs.Enemies
         {
             // DisplayName.SetDefault("Triangular Slime");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[2];
+            NPCID.Sets.ShimmerTransformToNPC[NPC.type] = NPCID.ShimmerSlime;
         }
 
         public override void SetDefaults()
@@ -43,8 +44,8 @@ namespace YeeHaw.Content.NPCs.Enemies
             NPC.knockBackResist = 0.5f;
             NPC.aiStyle = NPCID.BlueSlime;
             AnimationType = NPCID.GreenSlime;
-            Banner = Item.NPCtoBanner(NPCID.GreenSlime);
-            BannerItem = Item.BannerToItem(NPCID.GreenSlime);
+            Banner = NPC.type;
+            BannerItem = ModContent.ItemType<TriangleSlimeBanner>();
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -56,7 +57,7 @@ namespace YeeHaw.Content.NPCs.Enemies
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("Mutations cause some slimes to become triangular. These pointy slimes can be found on the Surface day and night."),
+				new FlavorTextBestiaryInfoElement("Mutations cause some slimes to become triangular. These pointy slimes can be found uncommonly on the Surface."),
 
 				// You can add multiple elements if you really wanted to
 				// You can also use localization keys (see Localization/en-US.lang)
@@ -76,14 +77,9 @@ namespace YeeHaw.Content.NPCs.Enemies
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (spawnInfo.Player.ZoneForest && !Main.hardMode)
-            {
-                return 0.15f;
-            }
-            else if (spawnInfo.Player.ZoneForest)  // Half as likely to spawn in Hardmode.
-            {
-                return 0.075f;
-            }
+            if (!Main.dayTime) return 0f;   // Cannot spawn at night
+            else if (spawnInfo.Player.ZoneForest && !Main.hardMode) return 0.15f;
+            else if (spawnInfo.Player.ZoneForest) return 0.075f; // Half as likely to spawn in Hardmode. 
             return 0f;
         }
 

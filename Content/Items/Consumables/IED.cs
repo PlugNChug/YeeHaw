@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YeeHaw.Content.Projectiles.Weapons;
-using Terraria.Audio;
 using YeeHaw.Content.Items.Materials;
 
 namespace YeeHaw.Content.Items.Consumables                 //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
@@ -36,11 +35,6 @@ namespace YeeHaw.Content.Items.Consumables                 //We need this to bas
             Item.shootSpeed = 5f; //This defines the projectile speed when shot
         }
 
-        public override void OnConsumeItem(Player player)
-        {
-            SoundStyle iedSound = new SoundStyle("YeeHaw/Content/Sounds/Items/NokiaArabic");
-            SoundEngine.PlaySound(iedSound);
-        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

@@ -19,7 +19,7 @@ namespace YeeHaw.Content.Items.Consumables
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.consumable = true;
             Item.knockBack = 2.1f;
             Item.value = Item.sellPrice(0, 0, 0, 6);

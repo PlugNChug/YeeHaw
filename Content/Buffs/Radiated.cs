@@ -26,9 +26,10 @@ namespace YeeHaw.Content.Buffs
 
             if (Main.rand.NextBool(20))
             {
-                int dust = Dust.NewDust(player.position, player.Hitbox.Width, player.Hitbox.Height, DustID.YellowTorch, 0f, 0f, 0, default, 1f);
+                int dust = Dust.NewDust(player.position, player.Hitbox.Width, player.Hitbox.Height, DustID.YellowTorch, 0f, 0f, 50, default, 1f);
                 Main.dust[dust].velocity *= 0f;
                 Main.dust[dust].noGravity = true;
+                Main.dust[dust].noLightEmittence = true;
             }
         }
 
@@ -38,9 +39,10 @@ namespace YeeHaw.Content.Buffs
 
             if (Main.rand.NextBool(20))
             {
-                int dust = Dust.NewDust(npc.position, npc.Hitbox.Width, npc.Hitbox.Height, DustID.YellowTorch, 0f, 0f, 0, default, 1f);
+                int dust = Dust.NewDust(npc.position, npc.Hitbox.Width, npc.Hitbox.Height, DustID.YellowTorch, 0f, 0f, 50, default, 1f);
                 Main.dust[dust].velocity *= 0f;
                 Main.dust[dust].noGravity = true;
+                Main.dust[dust].noLightEmittence = true;
             }
         }
     }

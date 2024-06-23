@@ -1,4 +1,8 @@
 displayName = Yee-Haw!
 author = Plug-n-Chug
-version = 0.3.3.2
+version = 0.3.4
 homepage = https://github.com/PlugNChug/YeeHaw
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*

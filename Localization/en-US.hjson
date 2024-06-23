@@ -59,7 +59,7 @@ Mods: {
 					'''
 					Reduces your defense if the full set isn't worn
 					5% increased critical strike chance
-					"Now with more headaches!"
+					'Now with more headaches!'
 					'''
 			}
 
@@ -75,7 +75,11 @@ Mods: {
 
 			LunarManipulator: {
 				DisplayName: Lunar Manipulator
-				Tooltip: Cycle through the moon phases!
+				Tooltip:
+					'''
+					Cycle through the moon phases!
+					Right click to cycle through different moon styles!
+					'''
 			}
 
 			NeptuniumArrow: {
@@ -85,7 +89,7 @@ Mods: {
 
 			WoodenBullet: {
 				DisplayName: Wooden Bullet
-				Tooltip: Only works with the Wood Gun
+				Tooltip: Only works with the Wooden Gun
 			}
 
 			NeptuniumRod: {
@@ -105,7 +109,7 @@ Mods: {
 
 			Motorpuncher: {
 				DisplayName: Motorpuncher
-				Tooltip: '''"Line 'em up, punch 'em out!"'''
+				Tooltip: "'Line 'em up, punch 'em out!'"
 			}
 
 			NeptuniumHamaxe: {
@@ -119,43 +123,72 @@ Mods: {
 			}
 
 			NeptuniumSword: {
-				DisplayName: Neptunium Sword
+				DisplayName: Neptunium Longblade
 				Tooltip: Reduces the target's defense, but reduces your defense when held
 			}
 
 			NeptuniumYoyo: {
-				DisplayName: Neptunium Yoyo
+				DisplayName: Sleek Spinner
 				Tooltip: Reduces the target's defense, but reduces your defense when held
 			}
 
 			Profit: {
 				DisplayName: Sword of Profit
-				Tooltip: Enemies struck by this sword will drop a significantly higher amount of coins on death
+				Tooltip:
+					'''
+					Inflicts the Midas debuff on enemies
+					[c/D1FFBD:When an enemy is struck by this weapon:]
+					[c/D1FFBD:- 95% chance to increase the value of the struck enemy by 10 copper coins]
+					[c/D1FFBD:- 4% chance to double the value of the struck enemy]
+					[c/D1FFBD:- 1% chance to triple the value of the struck enemy]
+					[c/D1FFBD:- Doubling and tripling will not happen if the target's value exceeds ] [i/s10:73]
+					[c/D1FFBD:- Struck bosses will always have their values increased by 50 copper coins instead]
+					Also makes you sparkle when held!
+					'''
 			}
 
 			RoyalBow: {
 				DisplayName: Royal Bow
 				Tooltip:
 					'''
-					Automatically fires when you hold
-
+					Fires [c/d6b4fc:two] arrows for the cost of one
+					Automatically fires when held
 					You feel like Terrarian royalty holding this
 					'''
 			}
 
 			TerraToiletPick: {
 				DisplayName: Terra Toilet Pickaxe
-				Tooltip: "[c/FFA0A0:This tool is extremely cumbersome]"
+				Tooltip:
+					'''
+					[c/FFA0A0:This tool is extremely cumbersome. Slows you down when held]
+					You somehow found a way to put your 'wasted' Broken Hero Sword to use
+					'''
 			}
 
 			WoodGun: {
 				DisplayName: Wooden Gun
-				Tooltip: ""
+				Tooltip: Can only consume Wooden Bullets
+			}
+
+			SuperExtendoHand: {
+				DisplayName: Super Extendo Hand
+				Tooltip:
+					'''
+					Struck enemies become extremely susceptible to knockback
+					Also works on most bosses!
+					'Send 'em to the stratosphere!'
+					'''
+			}
+
+			TriangleSlimeBanner: {
+				DisplayName: Triangular Slime Banner
+				Tooltip: Nearby players get a bonus against: Triangular Slime
 			}
 		}
 
 		NPCs: {
-			TriangleSlime.DisplayName: Triangle Slime
+			TriangleSlime.DisplayName: Triangular Slime
 
 			Supplier: {
 				DisplayName: Supplier
@@ -182,10 +215,10 @@ Mods: {
 		}
 
 		Projectiles: {
-			IEDProjectile.DisplayName: I E D Projectile
+			IEDProjectile.DisplayName: IED
 			Motorpuncher.DisplayName: Motorpuncher
-			NeptuniumArrowProjectile.DisplayName: Neptunium Arrow Projectile
-			NeptuniumYoyo.DisplayName: Neptunium Yoyo
+			NeptuniumArrowProjectile.DisplayName: Neptunium Arrow
+			NeptuniumYoyo.DisplayName: Sleek Spinner
 			WoodenBullet.DisplayName: Wooden Bullet
 		}
 	}

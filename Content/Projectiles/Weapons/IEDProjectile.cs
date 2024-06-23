@@ -4,12 +4,22 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using ReLogic.Utilities;
 
 
 namespace YeeHaw.Content.Projectiles.Weapons
 {
     internal class IEDProjectile : ModProjectile
     {
+        SlotId soundSlot;
+        bool played = false;
+
+        SoundStyle iedSound = new SoundStyle("YeeHaw/Content/Sounds/Items/NokiaArabic")
+        {
+            SoundLimitBehavior = SoundLimitBehavior.IgnoreNew,
+            MaxInstances = 3
+        };
+
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -18,16 +28,11 @@ namespace YeeHaw.Content.Projectiles.Weapons
 
         public override void SetDefaults()
         {
-            // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the Projectile clip into tiles as it bounces. It looks better.
             Projectile.width = 10;
             Projectile.height = 10;
             Projectile.aiStyle = 16;
-            Projectile.damage = 512;
             Projectile.friendly = true;
-            Projectile.hostile = true;
             Projectile.penetrate = -1;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = -1;
 
             // 23 second fuse, for 23 times 60 frames is 1380.
             Projectile.timeLeft = 1380;
@@ -42,40 +47,38 @@ namespace YeeHaw.Content.Projectiles.Weapons
             // Vanilla explosions do less damage to Eater of Worlds in expert mode, so we will too.
             if (Main.expertMode)
             {
-                if (target.type >= NPCID.EaterofWorldsHead && target.type <= NPCID.EaterofWorldsTail)
+                if ((target.type >= NPCID.EaterofWorldsHead && target.type <= NPCID.EaterofWorldsTail)
+                 || (target.type >= NPCID.TheDestroyer && target.type <= NPCID.TheDestroyerTail))
                 {
-                    modifiers.FinalDamage /= 500;
+                    modifiers.FinalDamage /= 20;
                 }
             }
         }
 
         public override void AI()
         {
+            if (!SoundEngine.TryGetActiveSound(soundSlot, out var _))
             {
-                // Smoke and fuse dust spawn.
-                if (Main.rand.NextBool(2))
-                {
-                    int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default(Color), 1f);
-                    Main.dust[dustIndex].scale = 0.1f + Main.rand.Next(5) * 0.1f;
-                    Main.dust[dustIndex].fadeIn = 1.5f + Main.rand.Next(5) * 0.1f;
-                    Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, -0.25f).RotatedBy((double)Projectile.rotation, default) * 1.1f;
-                }
+                var tracker = new ProjectileAudioTracker(Projectile);
+                soundSlot = SoundEngine.PlaySound(iedSound, Projectile.position, soundInstance => BasicSoundUpdateCallback(tracker, soundInstance));
             }
+
+                // Smoke and fuse dust spawn.
+                if (Main.rand.NextBool(2)) {
+                int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default(Color), 1f);
+                Main.dust[dustIndex].scale = 0.1f + Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].fadeIn = 1.5f + Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
+                Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, -0.25f).RotatedBy((double)Projectile.rotation, default) * 1.1f;
+            }
+
             Projectile.ai[0] += 1f;
-            if (Projectile.ai[0] > 5f)
-            {
+            if (Projectile.ai[0] > 5f) {
                 Projectile.ai[0] = 10f;
                 // Roll speed dampening.
-                if (Projectile.velocity.Y == 0f && Projectile.velocity.X != 0f)
-                {
+                if (Projectile.velocity.Y == 0f && Projectile.velocity.X != 0f) {
                     Projectile.velocity.X = Projectile.velocity.X * 0.97f;
-                    if (Projectile.type == 29 || Projectile.type == 470 || Projectile.type == 637)
-                    {
-                        Projectile.velocity.X = Projectile.velocity.X * 0.99f;
-                    }
-                    if (Projectile.velocity.X > -0.01 && Projectile.velocity.X < 0.01)
-                    {
+                    if (Projectile.velocity.X > -0.01 && Projectile.velocity.X < 0.01) {
                         Projectile.velocity.X = 0f;
                         Projectile.netUpdate = true;
                     }
@@ -87,12 +90,26 @@ namespace YeeHaw.Content.Projectiles.Weapons
             return;
         }
 
+        private bool BasicSoundUpdateCallback(ProjectileAudioTracker tracker, ActiveSound soundInstance)
+        {
+            // Update sound location according to projectile position
+            soundInstance.Position = Projectile.position;
+            // ProjectileAudioTracker is necessary to avoid rare situations where sounds can loop indefinitely. IsActiveAndInGame returns a value indicating if the sound should still be active.
+            return tracker.IsActiveAndInGame();
+        }
+
         public override void OnKill(int timeLeft)
         {
 
+            Projectile.width = Projectile.height = ((20 * 16) + 8) * 2;
+            Projectile.Center = Projectile.position;
+            Projectile.hostile = true;
+            Projectile.damage = 512;
+            Projectile.Damage();
+
             Vector2 position = Projectile.Center;
             SoundEngine.PlaySound(SoundID.Item14, new Vector2(Projectile.position.X, Projectile.position.Y));
-            int radius = 20;     //this is the explosion radius, the highter is the value the bigger the explosion
+            int radius = 20;     //this is the explosion radius, the higher the value is, the bigger the explosion will be
 
             for (int x = -radius; x <= radius; x++)
             {

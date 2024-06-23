@@ -25,6 +25,15 @@ namespace YeeHaw.Content.NPCs.Town
 	{
 		// public static bool unlockedSupplierSpawn = false;
 		public const string ShopName = "Illegal Trades";
+
+		private static int ShimmerHeadIndex;
+		private static Profiles.StackedNPCProfile NPCProfile;
+
+		public override void Load() {
+			// Adds our Shimmer Head to the NPCHeadLoader.
+			ShimmerHeadIndex = Mod.AddNPCHeadTexture(Type, Texture + "_Shimmer_Head");
+		}
+
 		public override void SetStaticDefaults() {
 			// DisplayName automatically assigned from localization files, but the commented line below is the normal approach.
 			// DisplayName.SetDefault("Supplier");
@@ -37,6 +46,8 @@ namespace YeeHaw.Content.NPCs.Town
 			NPCID.Sets.AttackTime[Type] = 16; // The amount of time it takes for the NPC's attack animation to be over once it starts.
 			NPCID.Sets.AttackAverageChance[Type] = 10;
 			NPCID.Sets.HatOffsetY[Type] = -2; // For when a party is active, the party hat spawns at a Y offset.
+			NPCID.Sets.ShimmerTownTransform[NPC.type] = true; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
+			NPCID.Sets.ShimmerTownTransform[Type] = true; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
 
 			// Influences how the NPC looks in the Bestiary
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() {
@@ -57,6 +68,11 @@ namespace YeeHaw.Content.NPCs.Town
 				.SetNPCAffection(NPCID.WitchDoctor, AffectionLevel.Like)
 				.SetNPCAffection(NPCID.Angler, AffectionLevel.Hate)
 			; // < Mind the semicolon!
+
+			NPCProfile = new Profiles.StackedNPCProfile(
+				new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Party"),
+				new Profiles.DefaultNPCProfile(Texture + "_Shimmer", ShimmerHeadIndex, Texture + "_Shimmer_Party")
+			);
 		}
 
 		public override void SetDefaults() {
@@ -149,7 +165,7 @@ namespace YeeHaw.Content.NPCs.Town
 		}*/
 
 		public override ITownNPCProfile TownNPCProfile() {
-			return new SupplierProfile();
+			return NPCProfile;
 		}
 
 		public override List<string> SetNPCNameList() {
@@ -186,9 +202,9 @@ namespace YeeHaw.Content.NPCs.Town
 				chat.Add("Woah, you can't just leave me out here doing business for all to see!");
 			}
 			// These are things that the NPC has a chance of telling you when you talk to it.
-			chat.Add("You don't see my drug ring when you're out and about, but I assure you, they're hard at work behind the scenes.");
+			chat.Add("You don't see my scoundrels when you're out and about, but I assure you, they're hard at work behind the scenes.");
 			chat.Add("Shhh, don't reveal me.");
-			chat.Add("In about 6 days my shipments will finally arrive. What do they contain? I'm not sure... my partner in crime told me about this.");
+			chat.Add("In about 6 days my next shipments will arrive. What do they contain? I'm not sure... my partner in crime told me about this.");
 			chat.Add("Psst...");
 			chat.Add("Hey you, c'mere. I have stuff you'll definitely be interested in.");
 			chat.Add("Welcome to my shop of *totally* legal goods!");
@@ -210,15 +226,15 @@ namespace YeeHaw.Content.NPCs.Town
 		{
 			var npcShop = new NPCShop(Type, ShopName)
 				.Add(new Item(ItemID.HeartStatue) {
-					shopCustomPrice = 20,
+					shopCustomPrice = 10,
 					shopSpecialCurrency = YeeHaw.TradeTokenID
 				})
 				.Add(new Item(ItemID.StarStatue) {
-					shopCustomPrice = 20,
+					shopCustomPrice = 10,
 					shopSpecialCurrency = YeeHaw.TradeTokenID
 				})
 				.Add(new Item(ItemID.BombStatue) {
-					shopCustomPrice = 20,
+					shopCustomPrice = 8,
 					shopSpecialCurrency = YeeHaw.TradeTokenID
 				})
 				.Add(new Item(ItemID.IllegalGunParts) {
@@ -226,36 +242,73 @@ namespace YeeHaw.Content.NPCs.Town
 					shopSpecialCurrency = YeeHaw.TradeTokenID
 				})
 				.Add(new Item(ItemID.GuideVoodooDoll) {
-					shopCustomPrice = 8,
+					shopCustomPrice = 3,
 					shopSpecialCurrency = YeeHaw.TradeTokenID
 				}, Condition.DownedSkeletron)
 				.Add(new Item(ItemID.ClothierVoodooDoll) {
-					shopCustomPrice = 6,
+					shopCustomPrice = 2,
 					shopSpecialCurrency = YeeHaw.TradeTokenID
 				}, Condition.DownedSkeletron)
+				.Add(new Item(ItemID.BloodMoonStarter) {
+					shopCustomPrice = 3,
+					shopSpecialCurrency = YeeHaw.TradeTokenID
+				}, [Condition.BloodMoon, Condition.Hardmode])
+				.Add(new Item(ItemID.LightKey) {
+					shopCustomPrice = 10,
+					shopSpecialCurrency = YeeHaw.TradeTokenID
+				}, Condition.Hardmode)
+				.Add(new Item(ItemID.NightKey) {
+					shopCustomPrice = 10,
+					shopSpecialCurrency = YeeHaw.TradeTokenID
+				}, Condition.Hardmode)
+				.Add(new Item(ItemID.SoulofMight) {
+					shopCustomPrice = 1,
+					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
+				}, Condition.DownedDestroyer)
+				.Add(new Item(ItemID.SoulofSight) {
+					shopCustomPrice = 1,
+					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
+				}, Condition.DownedTwins)
+				.Add(new Item(ItemID.SoulofFright) {
+					shopCustomPrice = 1,
+					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
+				}, Condition.DownedSkeletronPrime)
+				.Add(new Item(ItemID.SolarTablet) {
+					shopCustomPrice = 5,
+					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
+				}, Condition.DownedGolem)
 				.Add(new Item(ItemID.LastPrism) {
-					shopCustomPrice = 250,
+					shopCustomPrice = 160,
 					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
-				}, Condition.DownedCultist)
+				}, Condition.DownedMoonLord)
 				.Add(new Item(ItemID.Meowmere) {
-					shopCustomPrice = 250,
+					shopCustomPrice = 175,
 					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
-				}, Condition.DownedCultist)
+				}, Condition.DownedMoonLord)
 				.Add(new Item(ItemID.StarWrath) {
-					shopCustomPrice = 250,
+					shopCustomPrice = 170,
 					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
-				}, Condition.DownedCultist)
+				}, Condition.DownedMoonLord)
 				.Add(new Item(ItemID.SDMG) {
-					shopCustomPrice = 250,
+					shopCustomPrice = 160,
 					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
-				}, Condition.DownedCultist)
+				}, Condition.DownedMoonLord)
 				.Add(new Item(ItemID.DrillContainmentUnit) {
-					shopCustomPrice = 275,
+					shopCustomPrice = 200,
 					shopSpecialCurrency = YeeHaw.SuperTradeTokenID
 				}, Condition.DownedMoonLord)
 				.Add(new Item(ItemID.ShadowDye) {
 					shopCustomPrice = 10000
 				}, Condition.MoonPhaseFirstQuarter)
+				.Add(new Item(ItemID.VoidDye) {
+					shopCustomPrice = 10000
+				}, Condition.MoonPhaseFull)
+				.Add(new Item(ItemID.NegativeDye) {
+					shopCustomPrice = 10000
+				}, Condition.MoonPhaseThirdQuarter)
+				.Add(new Item(ItemID.GrimDye) {
+					shopCustomPrice = 10000
+				}, Condition.MoonPhaseNew)
 			;
 
 			if (Main.rand.NextBool(5))

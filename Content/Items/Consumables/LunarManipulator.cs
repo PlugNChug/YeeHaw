@@ -6,7 +6,7 @@ namespace YeeHaw.Content.Items.Consumables
 {
     public class LunarManipulator : ModItem
     {
-        string[] moonList = new string[8] { "Full Moon", "Waning Gibbous", "Third Quarter", "Waning Crescent", "New Moon", "Waxing Crescent", "First Quarter", "Waxing Gibbous" };
+        string[] moonList = ["Full Moon", "Waning Gibbous", "Third Quarter", "Waning Crescent", "New Moon", "Waxing Crescent", "First Quarter", "Waxing Gibbous"];
 
         public override void SetStaticDefaults()
         {

@@ -1,4 +1,4 @@
-﻿using Terraria;
+﻿/* using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -20,8 +20,11 @@ namespace YeeHaw.Common.Commands
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-
-            if (args[0].ToLower() == "dawn" || args[0].ToLower() == "morning")
+            if (!NPC.downedMoonlord)
+            {
+                caller.Reply("Let's do the time warp again");
+            }
+            else if (args[0].ToLower() == "dawn" || args[0].ToLower() == "morning")
             {
                 Main.dayTime = true;
                 Main.time = 0;
@@ -51,4 +54,4 @@ namespace YeeHaw.Common.Commands
             }
         }
     }
-}
+} */
