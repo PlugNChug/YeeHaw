@@ -3,15 +3,16 @@ Yee-Haw!
 This is an open source 1.4.4 mod that adds many random things, none of which are even cowboy related at all...
 https://github.com/PlugNChug/YeeHaw
 
-- New armor and gear made from the new Neptunium Ore, found uncommonly underground!
-- New Town NPC and special currencies! (Get a Platinum Coin to unlock him!)
+Here's what's new:
+New armor set and gear made from the new Neptunium Ore, found uncommonly underground!
+New Town NPC and special currencies! (Get a Platinum Coin to unlock him!)
 	- The first new currency, Trade Tokens, can be crafted from Gold Coins and Evil Bars!
 	- The second new currency, Super Trade Tokens, can be crafted from Trade Tokens and Hallowed Bars!
-- Triangular Slimes, which spawn on the Surface, are an easier way to get Pink Gel!
-- An assortment of fun weapons and doohickeys!
+Triangular Slimes, which spawn on the Surface, are an easier way to get Pink Gel!
+An assortment of fun weapons and doohickeys!
 	- Make money quickly with the Sword of Profit and its unique value-increasing mechanics!
 	- Listen to a quirky tune with the IED explosive!
 	- Knock enemies back even further with the Extendo Hand and Motorpuncher weapons!
 	- Cycle through moon phases and moon styles with the Lunar Manipulator!
 	- And more!
-- Probably some more stuff I don't remember :|
+Probably some more stuff I don't remember :|
